@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        {% load static %}
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <h1>Halo nama saya {{name}}</h1>
+    <button type="button" class="btn btn-danger m-3">Primary</button>
+
+    <form action="/url/to/submit/" method="post" class="form">
+        {% csrf_token %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        {% endbuttons %}
+    </form>
+
+    {% bootstrap_javascript %}
+</body>
+</html>

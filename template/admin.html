@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    <title>ADMIN</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">LIST USER</h1>
+        <div class="wrapper mt-4" style="min-height: auto;">
+            <a href="{% url 'tambahuser' %}">
+                <button class="btn btn-success">Tambah akun</button>
+            </a>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in data_user %}
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.password}}</td>
+                        <td>{{user.alamat}}</td>
+                        <td>
+                            <a href="{% url 'updateuser' user.id %}"><button class="btn btn-primary">Edit</button></a>
+                        </td>
+                        <td><a onclick="return confirm('anda ingin menghapus akun dengan id {{user.id}}')" href="{% url 'deleteuser' user.id %}"><button class="btn btn-danger">Delete</button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {% bootstrap_javascript %}
+</body>
+</html>
